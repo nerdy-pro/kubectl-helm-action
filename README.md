@@ -6,15 +6,6 @@ A Github action for using kubectl and helm to deploy applications to Kubernetes 
 
 ## How to use
 
-### Set up `KUBE_CONFIG_DATA` secret
-
-Encode your `kubeconfig` file with base64 encoding.
-
-```bash
-cat $HOME/.kube/config | base64
-```
-Store the encoded string as a secret with name `KUBE_CONFIG_DATA`, by navigating to your repo -> Settings -> Secrets -> Add a new secret
-
 ### Config a Github workflow
 
 Create a workflow file `.github/workflows/deploy.yaml`
@@ -30,8 +21,6 @@ jobs:
     - uses: actions/checkout@master
     - name: deploy to cluster
       uses: wahyd4/kubectl-helm-action@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
         args: kubectl apply -f manifest.yaml
 ```
@@ -41,8 +30,6 @@ Or you may want to deploy applications with `helm`
 ```yaml
 - name: deploy postgres to cluster
   uses: wahyd4/kubectl-helm-action@master
-  env:
-    KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
   with:
     args: |
       helm repo add bitnami https://charts.bitnami.com/bitnami

@@ -4,6 +4,9 @@
 
 A Github action for using kubectl and helm to deploy applications to Kubernetes cluster
 
+## ☕️ Buy me a coffee
+https://www.paypal.me/junvzhao
+
 ## How to use
 
 ### Config a Github workflow
@@ -36,6 +39,15 @@ Or you may want to deploy applications with `helm`
       helm upgrade --install postgres -n data bitnami/postgresql
 
 ```
+
+## Switch versions
+
+You can switch to different helm version by using different tags, current the master branch uses helm `3.13`
+
+* 3.12 wahyd4/kubectl-helm-action@3.12
+* 3.13 wahyd4/kubectl-helm-action@3.13
+* 3.14 wahyd4/kubectl-helm-action@3.14
+* 3.15 wahyd4/kubectl-helm-action@3.15
 
 ## Thanks
 
